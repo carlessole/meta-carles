@@ -1,0 +1,33 @@
+From 4eb6cdaea8d8b4076a35b0d7b87ab6b144ac1335 Mon Sep 17 00:00:00 2001
+From: Carles Sole Grau <carles@evert.com>
+Date: Wed, 16 Jul 2025 17:15:37 +0200
+Subject: [PATCH] Install everest_staging_helpers target and headers
+
+---
+ lib/staging/helpers/CMakeLists.txt | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/lib/staging/helpers/CMakeLists.txt b/lib/staging/helpers/CMakeLists.txt
+index 421c5321..676bf5b9 100644
+--- a/lib/staging/helpers/CMakeLists.txt
++++ b/lib/staging/helpers/CMakeLists.txt
+@@ -37,3 +37,16 @@ add_dependencies(everest_staging_helpers generate_cpp_files)
+ if (BUILD_TESTING)
+     add_subdirectory(tests)
+ endif()
++
++# Install the targets
++install(TARGETS everest_staging_helpers
++        EXPORT everest_staging_helpersTargets
++        ARCHIVE DESTINATION lib
++        LIBRARY DESTINATION lib
++        RUNTIME DESTINATION bin
++        INCLUDES DESTINATION include)
++
++# Install headers
++install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
++        DESTINATION include
++        FILES_MATCHING PATTERN "*.hpp")
+-- 
+2.48.1
+
