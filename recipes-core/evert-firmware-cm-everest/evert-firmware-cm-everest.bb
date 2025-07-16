@@ -1,19 +1,21 @@
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
-SRC_URI = "gitsm://git@github.com/InSol-Tech/firmware-cm-everest.git;branch=feat/PMU-369;protocol=ssh"
-SRCREV = "08ae438e2493be5184f1d51c535651499332584c"
+SRC_URI = "gitsm://git@github.com/InSol-Tech/firmware-cm-everest.git;branch=feat/PMU-380_libnfc_i2c_rpi;protocol=ssh"
+SRCREV = "6002de09d82a3ccb037bcbf83573f7e4aa8f3773"
 
 inherit cmake
 
 S = "${WORKDIR}/git"
 
-DEPENDS = " \
+DEPENDS += " \
+    pkgconfig-native \
     evcli-native \
     everest-cmake \
     everest-core \
     everest-framework \
     libocpp \
+    libnfc \
 "
 
 FILES:${PN} += "\
