@@ -2,7 +2,7 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
 SRC_URI = "gitsm://git@github.com/InSol-Tech/firmware-cm-everest.git;branch=feat/PMU-380_libnfc_i2c_rpi;protocol=ssh"
-SRCREV = "6002de09d82a3ccb037bcbf83573f7e4aa8f3773"
+SRCREV = "ef32032263e3c660ff35c54d3e0342b970531850"
 
 inherit cmake
 
