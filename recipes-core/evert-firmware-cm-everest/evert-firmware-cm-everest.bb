@@ -1,8 +1,8 @@
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
-SRC_URI = "gitsm://git@github.com/InSol-Tech/firmware-cm-everest.git;branch=feat/PMU-380_libnfc_i2c_rpi;protocol=ssh"
-SRCREV = "ef32032263e3c660ff35c54d3e0342b970531850"
+SRC_URI = "gitsm://git@github.com/InSol-Tech/firmware-cm-everest.git;branch=main;protocol=ssh"
+SRCREV = "2f79fbfea18c711ce8f6b1c7e707b6a444010359"
 
 inherit cmake
 
@@ -37,6 +37,9 @@ EXTRA_OECMAKE += " \
 do_install:append() {
     rm ${D}${datadir}/everest/version_information.txt
 
-    install -d ${D}${sysconfdir}/evert-firmware-cm-everest
-    cp -r ${S}/config/runconfig/*.yaml ${D}${sysconfdir}/evert-firmware-cm-everest/
+    install -d ${D}${sysconfdir}/evert-firmware-cm-everest/config/runconfig
+    cp -r ${S}/config/runconfig/yocto/*.yaml ${D}${sysconfdir}/evert-firmware-cm-everest/config/runconfig
+
+    install -d ${D}${sysconfdir}/evert-firmware-cm-everest/config/logs
+    cp -r ${S}/config/logs/logging.cfg ${D}${sysconfdir}/evert-firmware-cm-everest/config/logs
 }
