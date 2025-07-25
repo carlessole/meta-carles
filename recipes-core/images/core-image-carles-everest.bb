@@ -24,5 +24,6 @@ IMAGE_INSTALL:append = " \
     everest-core \
     evert-firmware-cm-everest \
     firmware-cm-input-handler \
+    tzdata \
     libnfc \
     mosquitto"
