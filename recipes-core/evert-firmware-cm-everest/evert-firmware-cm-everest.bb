@@ -4,8 +4,6 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 SRC_URI = "gitsm://git@github.com/InSol-Tech/firmware-cm-everest.git;branch=feat/PMU-392_yocto_synch;protocol=ssh"
 SRCREV = "4e0741f9ddab3f227be48e5efede127ff8dc5afe"
 
-SRC_URI += "file://user_config.json"
-
 inherit cmake
 
 S = "${WORKDIR}/git"
@@ -45,7 +43,7 @@ do_install:append() {
     install -d ${D}${sysconfdir}/evert-firmware-cm-everest/config/ocpp/v16
     install -m 0644 ${S}/config/ocpp/v16/config.json ${D}${sysconfdir}/evert-firmware-cm-everest/config/ocpp/v16/
     # 'user_config.json' is not commmitted, it is created at runtime
-    install -m 0644 ${WORKDIR}/user_config.json ${D}${sysconfdir}/evert-firmware-cm-everest/config/ocpp/v16/
+    # install -m 0644 ${S}/config/ocpp/v16/user_config.json ${D}${sysconfdir}/evert-firmware-cm-everest/config/ocpp/v16/
 
     # Create OCPP logs and database directories
     install -d ${D}${sysconfdir}/evert-firmware-cm-everest/Helper/ocpp16/logs
