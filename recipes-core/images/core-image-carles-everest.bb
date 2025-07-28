@@ -26,6 +26,7 @@ IMAGE_INSTALL:append = " \
     libocpp \
     everest-admin-panel \
     firmware-cm-input-handler \
+    vcan-systemd \
     tzdata \
     libnfc \
     mosquitto"
