@@ -23,6 +23,8 @@ IMAGE_INSTALL:append = " \
     can-utils \
     everest-core \
     evert-firmware-cm-everest \
+    libocpp \
+    everest-admin-panel \
     firmware-cm-input-handler \
     tzdata \
     libnfc \

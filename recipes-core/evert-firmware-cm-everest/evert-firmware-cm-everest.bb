@@ -2,7 +2,9 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
 SRC_URI = "gitsm://git@github.com/InSol-Tech/firmware-cm-everest.git;branch=feat/PMU-392_yocto_synch;protocol=ssh"
-SRCREV = "49033ad11a7d136e0a9293de04136f0c8354e849"
+SRCREV = "4e0741f9ddab3f227be48e5efede127ff8dc5afe"
+
+SRC_URI += "file://user_config.json"
 
 inherit cmake
 
@@ -16,11 +18,6 @@ DEPENDS += " \
     everest-framework \
     libocpp \
     libnfc \
-"
-
-FILES:${PN} += " \
-    ${datadir}/everest/* \
-    ${sysconfdir}/evert-firmware-cm-everest \
 "
 
 EXTRA_OECMAKE += " \
@@ -46,9 +43,9 @@ do_install:append() {
 
     # Copy OCPP configuration files
     install -d ${D}${sysconfdir}/evert-firmware-cm-everest/config/ocpp/v16
-    cp ${S}/config/ocpp/v16/config.json ${D}${sysconfdir}/evert-firmware-cm-everest/config/ocpp/v16/
+    install -m 0644 ${S}/config/ocpp/v16/config.json ${D}${sysconfdir}/evert-firmware-cm-everest/config/ocpp/v16/
     # 'user_config.json' is not commmitted, it is created at runtime
-    # cp ${S}/config/ocpp/v16/user_config.json ${D}${sysconfdir}/evert-firmware-cm-everest/config/ocpp/v16/
+    install -m 0644 ${WORKDIR}/user_config.json ${D}${sysconfdir}/evert-firmware-cm-everest/config/ocpp/v16/
 
     # Create OCPP logs and database directories
     install -d ${D}${sysconfdir}/evert-firmware-cm-everest/Helper/ocpp16/logs
@@ -57,3 +54,8 @@ do_install:append() {
     # Create EVSE logs directory
     install -d ${D}${sysconfdir}/evert-firmware-cm-everest/Helper/evse/everest-logs
 }
+
+FILES:${PN} += " \
+    ${datadir}/everest/* \
+    ${sysconfdir}/evert-firmware-cm-everest \
+"
