@@ -29,4 +29,6 @@ IMAGE_INSTALL:append = " \
     vcan-systemd \
     tzdata \
     libnfc \
+    wifi-config \
+    wifi-connect \
     mosquitto"
