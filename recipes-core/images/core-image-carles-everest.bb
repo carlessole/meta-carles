@@ -23,5 +23,19 @@ IMAGE_INSTALL:append = " \
     can-utils \
     everest-core \
     evert-firmware-cm-everest \
+    libocpp \
+    everest-admin-panel \
+    firmware-cm-input-handler \
+    vcan-systemd \
+    tzdata \
     libnfc \
+    wifi-config \
+    wifi-connect \
     mosquitto"
+
+# Enable automatic SSH service if systemd is in use
+SYSTEMD_AUTO_ENABLE:append = " sshd.service"
+SYSTEMD_SERVICE:append = " sshd.service"
+
+# Optional: allow root login without password (for development only!)
+EXTRA_IMAGE_FEATURES += "debug-tweaks"
