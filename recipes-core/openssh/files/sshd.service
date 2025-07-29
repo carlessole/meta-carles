@@ -1,0 +1,11 @@
+[Unit]
+Description=OpenSSH server daemon
+After=network.target auditd.service
+
+[Service]
+ExecStart=/usr/sbin/sshd -D
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

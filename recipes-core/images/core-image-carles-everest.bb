@@ -32,3 +32,10 @@ IMAGE_INSTALL:append = " \
     wifi-config \
     wifi-connect \
     mosquitto"
+
+# Enable automatic SSH service if systemd is in use
+SYSTEMD_AUTO_ENABLE:append = " sshd.service"
+SYSTEMD_SERVICE:append = " sshd.service"
+
+# Optional: allow root login without password (for development only!)
+EXTRA_IMAGE_FEATURES += "debug-tweaks"
