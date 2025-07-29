@@ -1,8 +1,8 @@
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
-SRC_URI = "gitsm://git@github.com/InSol-Tech/firmware-cm-everest.git;branch=feat/PMU-392_yocto_synch;protocol=ssh"
-SRCREV = "4e0741f9ddab3f227be48e5efede127ff8dc5afe"
+SRC_URI = "gitsm://git@github.com/InSol-Tech/firmware-cm-everest.git;branch=main;protocol=ssh"
+SRCREV = "75ecdd6296444acf0e6ee5bb2f05502a991750fc"
 
 inherit cmake
 
